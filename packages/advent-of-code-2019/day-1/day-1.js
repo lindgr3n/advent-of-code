@@ -15,5 +15,33 @@ function calculateModules({ modules } = {}) {
     }, 0)
 }
 
+function calculateReqursiveModule({ module } = {}) {
+    let nextSum = calculateRequiredFuel({ mass: module })
+    let sum = nextSum;
+    let maxTries = 10000;
+    while (nextSum > 0) {
+        nextSum = calculateRequiredFuel({ mass: nextSum })
+        if (nextSum > 0) {
+            sum += nextSum;
+        }
+        // Sanity check
+        if (maxTries < 1) {
+            return;
+        }
+        maxTries--;
+    }
 
-module.exports = { calculateRequiredFuel, calculateModules }
+    return sum
+
+}
+
+function calculateReqursiveModules({ modules } = {}) {
+    const totalFuel = modules.reduce((fuel, module) => {
+        fuel += calculateReqursiveModule({ module });
+        return fuel;
+    }, 0)
+
+    return totalFuel;
+}
+
+module.exports = { calculateRequiredFuel, calculateModules, calculateReqursiveModule, calculateReqursiveModules }
