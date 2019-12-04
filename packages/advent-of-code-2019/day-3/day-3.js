@@ -61,22 +61,35 @@
 
  function getIntersections({pathsOne, pathsTwo} = {}) {
   const paths = [];
+  let stepsA = 0;
+  let stepsB = 0;
   for (let a = 0; a < pathsOne.length-1; a++) {
     const pathAFrom = pathsOne[a];
     const pathATo = pathsOne[a+1];
     for (let b = 0; b < pathsTwo.length-1; b++) {
       const pathBFrom = pathsTwo[b];
       const pathBTo = pathsTwo[b+1];
-      const result = getIntersection({pathOne: [pathAFrom, pathATo], pathTwo: [pathBFrom, pathBTo]})      
+      const result = getIntersection({pathOne: [pathAFrom, pathATo], pathTwo: [pathBFrom, pathBTo]})
       if(result.length === 2) {
         // console.log(result);
-        
+        // Print steps we got first intersection
+        console.log('STEPS', stepsA, stepsB);
         paths.push(result)
-      } 
+      } else {
+        // Add steps taken
+        stepsA += getSteps(pathAFrom, pathATo)
+        stepsB += getSteps(pathBFrom, pathBTo)
+      }
     }
   }
 
   return paths;
+ }
+
+ function getSteps(pathAFrom, pathATo) {
+   console.log(pathAFrom, pathATo);
+   
+  return Math.sqrt(Math.pow((pathATo[0] - pathAFrom[0]), 2) + Math.pow((pathATo[1] - pathAFrom[1]), 2))
  }
 
  function getShortestDistance(paths) {
@@ -134,4 +147,4 @@ function manhattanDistance({pathOne, pathTwo} = {}) {
     return Math.abs(a) + Math.abs(b);
 }
 
- module.exports = {getPathCordinates, getIntersection, getIntersections, getShortestDistance, manhattanDistance}
+ module.exports = {getPathCordinates, getIntersection, getIntersections, getShortestDistance, manhattanDistance, getSteps}

@@ -1,4 +1,4 @@
-const { getPathCordinates, getIntersection, getIntersections, getShortestDistance, manhattanDistance } = require('./day-3')
+const { getPathCordinates, getIntersection, getIntersections, getShortestDistance, manhattanDistance, getSteps } = require('./day-3')
 
 describe('Day 3', () => {
   describe('getCordinates', () => {
@@ -68,6 +68,16 @@ describe('Day 3', () => {
 
       const resultTwo = manhattanDistance({pathOne: 'R98,U47,R26,D63,R33,U87,L62,D20,R33,U53,R51', pathTwo: 'U98,R91,D20,R16,D67,R40,U7,R15,U6,R7'})
       expect(resultTwo).toEqual(135);
+    });
+  });
+
+  describe('getSteps', () => {
+    it('should be defined', () => {
+      expect(getSteps).toBeDefined();
+    });
+
+    it('should calculate correct', () => {
+      expect(getSteps([3,5], [8,5])).toEqual(5);
     });
   });
 });
