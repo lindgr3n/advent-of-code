@@ -78,6 +78,7 @@ describe('Day 3', () => {
 
     it('should calculate correct', () => {
       expect(getSteps([3,5], [8,5])).toEqual(5);
+      expect(getSteps([0,0], [1004,0])).toEqual(1004);
     });
   });
 });

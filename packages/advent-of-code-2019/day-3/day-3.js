@@ -87,7 +87,7 @@
  }
 
  function getSteps(pathAFrom, pathATo) {
-   console.log(pathAFrom, pathATo);
+  //  console.log(pathAFrom, pathATo);
    
   return Math.sqrt(Math.pow((pathATo[0] - pathAFrom[0]), 2) + Math.pow((pathATo[1] - pathAFrom[1]), 2))
  }
