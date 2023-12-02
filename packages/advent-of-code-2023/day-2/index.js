@@ -16,11 +16,11 @@ readPuzzleInputAsArray({
     sumOfGameIds += parseInt(id);
   });
 
-  console.log("Day-1 Part one answer: ", sumOfGameIds);
+  console.log("Day-2 Part one answer: ", sumOfGameIds);
 
   const gamePowers = calculateAllGamesPowers(data);
   console.log(
-    "Day-1 Part two answer: ",
+    "Day-2 Part two answer: ",
     gamePowers.reduce((sum, power) => (sum += power), 0)
   );
 });
