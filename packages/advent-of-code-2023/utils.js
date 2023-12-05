@@ -6,7 +6,7 @@ function readPuzzleInputAsArray({ filename }) {
     const filePath = path.join(__dirname, filename);
     fs.readFile(filePath, "utf8", function (err, data) {
       if (err) {
-        reject(error);
+        reject(err);
         return;
       }
       resolve(
@@ -24,7 +24,7 @@ function readPuzzleInput({ filename }) {
     const filePath = path.join(__dirname, filename);
     fs.readFile(filePath, "utf8", function (err, data) {
       if (err) {
-        reject(error);
+        reject(err);
         return;
       }
       resolve(data);
